@@ -1,0 +1,8 @@
+- Static Assets
+- Advanced User Registration
+- Environmental Variables
+- Store app
+- review app
+- file/image uploads
+- Permissions
+- Search functionality
