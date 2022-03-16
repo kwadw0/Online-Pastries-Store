@@ -37,14 +37,31 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     #local apps
     'pages',
     'accounts',
     'store',
-]
 
-AUTH_USER_MODEL = 'accounts.CustomUser'
+    #third party apps
+    'allauth',
+    'allauth.account',
+]
+SITE_ID = 1
+LOGIN_REDIRECT_URL = 'store'
+#This is django allauth Logout redirect
+ACCOUNT_LOGOUT_REDIRECT_URL = 'store'
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' #This is to send an email to the console when a user signs up
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False#we are telling django to ask for the password once when signing up
+AUTH_USER_MODEL = 'accounts.CustomUser'#we tell django to use our custom user model
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -128,3 +145,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
