@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'store',
 
     #third party apps
+    'crispy_forms',
     'allauth',
     'allauth.account',
 ]
@@ -64,10 +65,14 @@ AUTHENTICATION_BACKENDS = [
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
+
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' #This is to send an email to the console when a user signs up
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False#we are telling django to ask for the password once when signing up
 AUTH_USER_MODEL = 'accounts.CustomUser'#we tell django to use our custom user model
 
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -148,6 +153,8 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = (str(BASE_DIR.joinpath('static')),)#This tells us the name of the static folder
 STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))#this tells us the location of the static files
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = str(BASE_DIR.joinpath('media'))
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 

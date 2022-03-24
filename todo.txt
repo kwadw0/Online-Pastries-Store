@@ -4,5 +4,8 @@
 - Store app
 - review app
 - file/image uploads
+- Create uuid
+- Create a category for the proucts
+- Create contact form
 - Permissions
 - Search functionality

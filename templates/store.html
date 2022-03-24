@@ -1,21 +1,49 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-{% if user.is_authenticated %}
-    <p>hi <strong>{{user.username}}</strong>!!</p>
-    <a href="{% url 'account_logout' %}">Logout</a>
-{% else %}
-    <a href="{% url 'account_login' %}">Login</a>
-    <a href="{% url 'account_signup' %}">signup</a>
-{% endif %}
-{% for product in object_list %}
-<div>
-    <h2>{{ product.name }}</h2>
-    <ul>
-        <li>{{ product.price }}</li>
-    </ul>
-    <p>
-        {{ product.description }}
-    </p>
-</div>
-{% endfor %}
+<section class="main">
+    <div class="container py-5">
+        <div class="row" py-4>
+            <div class="col-lg-7 pt-5 text-center">
+                <h1 class="pt-5">Best Choclate Ever in a While</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="products">
+    <div class="container py-5">
+        <div class="row py-5">
+            <div class="col-lg-5 m-auto text-center">
+                <h1>Our Products</h1>
+            </div>
+        </div>
+        <div class="row gy-5">
+            {% for product in object_list %}
+                <div class="col-lg-3">
+                    <div class="card bg-light mb-2" style="width: 18rem;">
+                        <img src="{{ product.images.url }}" class="card-img-top card-img" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">Price: ${{ product.price }}</p>
+                            <a href="#" class="btn btn-primary">Add to cart</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<section class="about">
+    <div class="container py-5">
+        <div class="row py-5">
+            <div class="col-lg-3 m-auto text-center">
+                <h1>Best Choclate</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
 {% endblock content %}
