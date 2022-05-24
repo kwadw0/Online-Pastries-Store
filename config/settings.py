@@ -10,16 +10,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-
 from pathlib import Path
 from environs import Env
+
 env = Env()
 env.read_env()  # read .env file, if it exists
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -30,8 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = env.bool("DEBUG", default=False)
 SECRET_KEY = env.str("SECRET_KEY")
 
-ALLOWED_HOSTS = ['127.0.0.1',]
-
+ALLOWED_HOSTS = ['127.0.0.1', ]
 
 # Application definition
 
@@ -44,19 +41,19 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
-    #local apps
+    # local apps
     'pages',
     'accounts',
     'store',
 
-    #third party apps
+    # third party apps
     'crispy_forms',
     'allauth',
     'allauth.account',
 ]
 SITE_ID = 1
 LOGIN_REDIRECT_URL = 'store'
-#This is django allauth Logout redirect
+# This is django allauth Logout redirect
 ACCOUNT_LOGOUT_REDIRECT_URL = 'store'
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -66,11 +63,9 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' #This is to send an email to the console when a user signs up
-ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False#we are telling django to ask for the password once when signing up
-AUTH_USER_MODEL = 'accounts.CustomUser'#we tell django to use our custom user model
-
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # This is to send an email to the console when a user signs up
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False  # we are telling django to ask for the password once when signing up
+AUTH_USER_MODEL = 'accounts.CustomUser'  # we tell django to use our custom user model
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
@@ -103,7 +98,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
@@ -113,7 +107,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -133,7 +126,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -145,13 +137,12 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = (str(BASE_DIR.joinpath('static')),)#This tells us the name of the static folder
-STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))#this tells us the location of the static files
+STATICFILES_DIRS = (str(BASE_DIR.joinpath('static')),)  # This tells us the name of the static folder
+STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))  # this tells us the location of the static files
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = str(BASE_DIR.joinpath('media'))
@@ -159,5 +150,3 @@ MEDIA_ROOT = str(BASE_DIR.joinpath('media'))
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+ 
+<section class="container">
+    <div class="row mt-5">
+        <div class="col-lg-5 col-md-12 col-12">
+            <img class="img-fluid detail-img" src="{{ product.images.url }}" alt="">
+        </div>
+    
+        <div class="col-lg-6 col-md-12 col-12">
+            <h3 class="">{{ product.name }}</h3>
+            <h2>${{ product.price }}</h2>
+            <input class="qty" type="number">
+            <button type="button" class="btn btn-cart-card">Add to Cart</button>
+            <h4 class="mt-5 mb-5">Product Details</h4>
+            <span>{{product.description}}</span>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

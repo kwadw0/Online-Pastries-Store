@@ -17,15 +17,17 @@
                 <h1>Our Products</h1>
             </div>
         </div>
-        <div class="row gy-5">
+        <div class="row">
             {% for product in object_list %}
-                <div class="col-lg-3">
-                    <div class="card bg-light mb-2" style="width: 18rem;">
-                        <img src="{{ product.images.url }}" class="card-img-top card-img" alt="...">
-                        <div class="card-body">
+                <div class="g-col-6 col-lg-3">
+                    <div class="card bg-light mt-4">
+                        <a href="{{ product.get_absolute_url }}">
+                            <img src="{{ product.images.url }}" class="img-fluid card-img card-img-top" alt="...">
+                        </a>
+                        <div class="card-body ">
                             <h5 class="card-title">{{ product.name }}</h5>
                             <p class="card-text">Price: ${{ product.price }}</p>
-                            <a href="#" class="btn btn-primary">Add to cart</a>
+                            <a href="#" class="btn btn-cart-card">Add to cart</a>
                         </div>
                     </div>
                 </div>
