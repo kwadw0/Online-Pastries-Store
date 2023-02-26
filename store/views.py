@@ -10,4 +10,9 @@ class StoreListView(ListView):
 class StoreDetailView(DetailView):
     model = Product
     template_name = 'product_detail.html'
+
+#This is 
+class CartListView(ListView):
+    model = Product
+    template_name = 'cart.html'
 # Create your views here.
